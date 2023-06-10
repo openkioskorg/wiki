@@ -12,7 +12,7 @@ Commands are instructions sent from the backend to the microservice components. 
 
 ```json
 {
-    "cmd": "start"
+    "cmd": "start",
     "data": "this field exists but is ignored in this case!"
 }
 ```
@@ -22,7 +22,7 @@ Events are caused by user interactions or they're results of commands issued by 
 
 ```json
 {
-    "event": "moneyin"
+    "event": "moneyin",
     "data": {
         "amount": 100,
         "currency": "eur"
