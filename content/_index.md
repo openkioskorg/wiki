@@ -30,3 +30,5 @@ Define all of your components in one configuration file and get them connected.
 Enjoy controlling remote components or messaging over the internet with MQTT.
 
 {{< /columns >}}
+
+[Looking for build instructions for the Monero ATM?](https://gitlab.com/monero-atm/atm-pico/-/blob/master/README.md)
