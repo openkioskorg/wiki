@@ -11,6 +11,11 @@ title: Money acceptors (pulse)
 ## Debugging and finding config parameters using `pulse-watcher`
 `pulse-watcher` is an useful program that prints widths of each pulse and pause. Upon exiting it also prints averages for both. You can use it to figure out values for debounce and denoise parameters for `pulseacceptord`.
 
+Install by running:
+```sh
+go install gitlab.com/openkiosk/pulseacceptor/cmd/pulse-watcher@latest
+```
+
 Example usage:
 ```sh
 # Listen on GPIO pin 17 for pulses, if no pulses follow after 101 milliseconds
@@ -20,6 +25,12 @@ pulse-watcher -pin 17 -timeout 101ms
 
 ## Handling coins/cash with `pulseacceptord`
 `pulseacceptord` denoises and debounces the pulses to prevent noise. After it is done counting pulses for a single bill/coin, it sends the event in to MQTT for queueing.
+
+
+Install by running:
+```sh
+go install gitlab.com/openkiosk/pulseacceptor/cmd/pulseacceptord@latest
+```
 
 Change the values inside [`config.yaml`](https://gitlab.com/openkiosk/pulseacceptor/-/blob/master/cmd/pulseacceptord/config.yaml) before running.
 
@@ -31,9 +42,19 @@ Change the values inside [`config.yaml`](https://gitlab.com/openkiosk/pulseaccep
 `config.yaml`:
 ```yaml
 device:
-  pin: 17
+  pulse_pin: 17
+  # Some devices write an extra low/high when beginning to send pulses
+  # You might need this mode if you notice that always 1 pulse is missing
+  plus_one_mode: true
   debounce: "110ms"
   denoise: "29ms"
+
+# Some devices have "enable" pins to start/stop money input.
+enable_pin_control: true
+# Specify if enable_pin_control is enabled.
+enable_pin: 27
+# Is it enabled when the signal is high?
+enabled_when_high: false
 
 # pulses: amount
 values:

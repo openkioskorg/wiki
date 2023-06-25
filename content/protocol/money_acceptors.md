@@ -8,7 +8,7 @@ title: "Money acceptors"
 Instructs the device to start accepting bills or coin.
 
 {{< hint type=warning >}}
-If the device uses pulse interface and its control over ccTalk, MDB, SSP isn't possible, then it's not possible to truly start or stop it. In this case the `moneyin` events aren't sent unless a `start` command is received.
+If the device uses pulse interface and its control using enable pin isn't possible, then it's not possible to truly start or stop it. In this case the `moneyin` events are ignored and not sent unless a `start` command is received.
 {{< /hint >}}
 
 ```json
